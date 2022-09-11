@@ -34,7 +34,7 @@ jobs:
         id: storageAccountDeploy
         with:
           scope: resourcegroup
-          resourcegroupName: rg-gitHubActions
+          resourceGroupName: rg-gitHubActions
           subscriptionId: 874cbdc5-ba34-4a42-89bc-da0f025e4bbe
           template: ./arm-templates/storageaccount.json
           parameters: 
