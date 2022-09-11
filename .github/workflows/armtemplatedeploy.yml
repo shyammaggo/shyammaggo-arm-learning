@@ -35,7 +35,7 @@ jobs:
           template: ./arm-templates/storageaccount.json
           parameters: 
             ./arm-templates/storageaccount.parameters.json
-            StorageAccountName=shyammaggostg002
+            storageAccountName=shyammaggostg002
             location="Australia East"
 
           deploymentMode: incremental
