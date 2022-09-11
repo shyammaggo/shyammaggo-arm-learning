@@ -24,25 +24,24 @@ jobs:
           subscriptionId: 874cbdc5-ba34-4a42-89bc-da0f025e4bbe
           region: Australia East
           template: ./arm-templates/resourcegroup.json
+          parameters:
+            location="Australia East"
+            resourcegroupName=rg-gitHubActions
           deploymentName: rg-gitHubActions
 
       - name: Deploy Storage account
         uses: Azure/arm-deploy@v1
+        id: storageAccountDeploy
         with:
           scope: resourcegroup
           resourcegroupName: rg-gitHubActions
           subscriptionId: 874cbdc5-ba34-4a42-89bc-da0f025e4bbe
           template: ./arm-templates/storageaccount.json
           parameters: 
-            ./arm-templates/storageaccount.parameters.json
+            sku=Standard_LRS
             storageAccountName=shyammaggostg002
             location="Australia East"
-
           deploymentMode: incremental
 
-
-      # - name: Deploy Resource Group rg-gitHubActions with AZ CLI
-      #   uses: Azure/cli@v1
-      #   with:
-      #       inlinescript: |
-      #         az deployment sub create --location "Australia East" --template-file ./arm-templates/resourcegroup.json
+      - run: echo ${{ steps.storageAccountDeploy.outputs.BlobUri }}
+     
