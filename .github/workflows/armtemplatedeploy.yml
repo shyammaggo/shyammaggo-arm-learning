@@ -26,7 +26,7 @@ jobs:
           template: ./arm-templates/resourcegroup.json
           parameters:
             location="Australia East"
-            resourcegroupName=rg-gitHubActions
+            resourceGroupName=rg-gitHubActions
           deploymentName: rg-gitHubActions
 
       - name: Deploy Storage account
